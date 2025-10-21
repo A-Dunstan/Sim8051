@@ -14,14 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
 
     steps:
     - uses: actions/checkout@v3
-
-    - name: Install sfml dependency (Linux)
-      if: runner.os == 'Linux'
-      run: sudo apt-get install libsfml-dev
 
     - name: Install sfml dependency (Windows)
       if: runner.os == 'Windows'
@@ -36,10 +32,6 @@ jobs:
         git -C deps/imgui checkout docking
         cat deps/imgui-sfml/imconfig-SFML.h >> deps/imgui/imconfig.h
 
-    - name: Configure CMake (Linux)
-      if: runner.os == 'Linux'
-      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-
     - name: Configure CMake (Windows)
       if: runner.os == 'Windows'
       run: |
@@ -53,6 +45,5 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          build/sim8051/src/sim8051
           build/sim8051/src/Release/sim8051.exe
         body: "Automated release build."

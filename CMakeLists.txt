@@ -17,7 +17,7 @@ endif()
 add_definitions(-DCMAKE_PROJECT_ROOT="${CMAKE_CURRENT_SOURCE_DIR}")
 
 # packages
-find_package(SFML 3.0 COMPONENTS Graphics REQUIRED)
+find_package(SFML 3.0 COMPONENTS Graphics Window System Main REQUIRED)
 
 # subdirectories
 set(EXE_NAME ${PROJECT_NAME})

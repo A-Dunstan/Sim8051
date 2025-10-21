@@ -38,7 +38,7 @@ target_link_directories(${EXE_NAME}
         ${SFML_LIB_DIR}
 )
 target_link_libraries(${EXE_NAME}
-    opengl32 SFML::Graphics-s SFML::Window-s SFML::System-s SFML::Main winmm gdi32
+    opengl32 SFML::Graphics SFML::Window SFML::System SFML::Main winmm gdi32
 )
 else()
 target_link_libraries(${EXE_NAME}
